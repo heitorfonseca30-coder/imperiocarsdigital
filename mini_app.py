@@ -39,7 +39,7 @@ resumo["Status"] = resumo["Lucro"].apply(lambda x: "🟢 LUCRO" if x > 0 else "�
 resumo["Margem (%)"] = ((resumo["Valor"] - resumo["Custo"]) / resumo["Valor"]) * 100
 return resumo
 =================================================================
-🖥️ FLUXO DE NAVEGAÇÃO
+ FLUXO DE NAVEGAÇÃO
 =================================================================
 if 'logado' not in st.session_state: st.session_state.logado = False st.session_state.user = None
 
