@@ -21,7 +21,7 @@ SENHA_MESTRA_DONO = "300611h@bi" def gerar_hash(senha): return hashlib.sha256(st
 if 'db_usuarios' not in st.session_state: st.session_state.db_usuarios = { "Empresa_Alpha": {"senha": gerar_hash("Alpha@2026"), "nicho": "🛒 Supermercado", "vencimento": datetime.now() + timedelta(hours=2), "webhook_cliente": ""}, "User_Teste": {"senha": gerar_hash("123"), "nicho": "🍔 Restaurante", "vencimento": datetime.now() + timedelta(minutes=30), "webhook_cliente": ""} }
 
 =================================================================
-🚀 MOTOR DE DADOS (BI + INTELIGÊNCIA DE PRODUTO)
+ MOTOR DE DADOS (BI + INTELIGÊNCIA DE PRODUTO)
 =================================================================
 def gerar_dados_bi(nicho): np.random.seed(42) datas = [datetime.now() - timedelta(days=x) for x in range(30)] itens = ['Arroz 5kg', 'Feijão 1kg', 'Óleo de Soja', 'Carne Alcatra', 'Leite Integral', 'Pão Francês'] dados = [] for d in datas: for _ in range(np.random.randint(5, 12)): prod = np.random.choice(itens) # Simulação de margens variadas (incluindo prejuízo proposital para demonstração) custo_base = 25.0 if prod == 'Carne Alcatra' else 8.0 venda_base = 22.0 if prod == 'Carne Alcatra' else 12.0 # Prejuízo na carne proposital
 
