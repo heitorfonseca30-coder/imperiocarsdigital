@@ -50,7 +50,7 @@ def gerar_dados_simulados(nicho_escolhido):
 # =================================================================
 # 🖥️ INTERFACE DO PORTAL BI (SaaS)
 # =================================================================
-st.set_page_config(page_title="Portal BI SaaS v29.0", layout="wide")
+st.set_page_config(page_title="Portal BI SaaS v29.1", layout="wide")
 
 if 'logado' not in st.session_state:
     st.session_state.logado = False
@@ -155,12 +155,12 @@ else:
 # =================================================================
 # 📝 HISTÓRICO DE VERSÕES (MANUAL AUTO-ATUALIZÁVEL)
 # =================================================================
-with st.expander("📖 Manual do Sistema & Changelog v29.0"):
+with st.expander("📖 Manual do Sistema & Changelog v29.1"):
     st.write(\"\"\"
     **Últimas Atualizações:**
+    - v29.1: Correção de erro de sintaxe na linha 159.
     - v29.0: Consolidação total de módulos (IA + Simulador + Trava + SaaS).
     - v28.0: Chave Mestra para simulação rápida protegida por senha.
     - v27.0: Simulador Universal de Vendas (Modo Pitch).
     - v22.0: Sistema de bloqueio automático por expiração de tempo.
-    - v20.0: Proteção de credenciais via Secrets do Replit.
     \"\"\")
