@@ -14,7 +14,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 =================================================================
-🛡️ SEGURANÇA E ACESSO
+ SEGURANÇA E ACESSO
 =================================================================
 SENHA_MESTRA_DONO = "300611h@bi" def gerar_hash(senha): return hashlib.sha256(str.encode(senha)).hexdigest()
 
