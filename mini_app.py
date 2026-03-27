@@ -99,5 +99,7 @@ else:
     if st.sidebar.button("Sair"):
         st.session_state.logado = False; st.rerun()
 
-with st.expander("📖 Manual v35.1"):
+with st.expander("📖 Manual v35.2"):
     st.write("Portal Sincronizado e Purificado de Erros.")
+✅ O QUE VOCÊ DEVE FAZER AGORA:
+Vá no GitHub, apague tudo do mini_app.py e cole este có
