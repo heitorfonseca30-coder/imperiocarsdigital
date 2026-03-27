@@ -1,12 +1,10 @@
-st.set_page_config(page_title="Imperio BI v41.4", layout="wide")
+from datetime import datetime, timedelta
+
+st.set_page_config(page_title="Imperio BI v41.5", layout="wide")
 
 st.markdown("""
 
-.stApp { background-color: #f0f2f6; }
-.stMetric { background-color: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 5px solid #1E3A8A; }
-.stButton>button { width: 100%; border-radius: 10px; background-color: #1E3A8A; color: white; font-weight: bold; height: 3.5em; }
-</style>
-""", unsafe_allow_html=True)
+.stApp { background-color: #f0f2f6; } .stMetric { background-color: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 5px solid #1E3A8A; } .stButton>button { width: 100%; border-radius: 10px; background-color: #1E3A8A; color: white; font-weight: bold; height: 3.5em; } """, unsafe_allow_html=True)
 
 MASTER_PASSWORD = "300611h@bi"
 
@@ -25,7 +23,8 @@ if menu == "Dashboard":
     c1, c2 = st.columns(2)
     c1.metric("Vendas", f"R$ {df['Valor'].sum():,.2f}")
     c2.metric("Lucro", f"R$ {df['Lucro'].sum():,.2f}")
-    st.plotly_chart(px.line(df.groupby('Data')['Valor'].sum(), title="Vendas Diarias"), use_container_width=True)
+    v_diaria = df.groupby('Data')['Valor'].sum().reset_index()
+    st.plotly_chart(px.line(v_diaria, x='Data', y='Valor', title="Vendas Diarias"), use_container_width=True)
 
 elif menu == "Estoque":
     st.title("Analise de Itens")
