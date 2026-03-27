@@ -163,4 +163,4 @@ with st.expander("📖 Manual do Sistema & Changelog v29.0"):
     - v27.0: Simulador Universal de Vendas (Modo Pitch).
     - v22.0: Sistema de bloqueio automático por expiração de tempo.
     - v20.0: Proteção de credenciais via Secrets do Replit.
-  \"\"\")
+    \"\"\")
