@@ -1,4 +1,4 @@
-st.set_page_config(page_title="Imperio BI v41.3", layout="wide")
+st.set_page_config(page_title="Imperio BI v41.4", layout="wide")
 
 st.markdown("""
 
@@ -8,7 +8,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-MASTER_PASSWORD = "300611h@bi" def make_hash(p): return hashlib.sha256(str.encode(p)).hexdigest()
+MASTER_PASSWORD = "300611h@bi"
+
+def make_hash(p): return hashlib.sha256(str.encode(p)).hexdigest()
 
 if 'db' not in st.session_state: st.session_state.db = { "Empresa_Alpha": {"pw": make_hash("Alpha@2026"), "nicho": "Varejo", "wh": ""}, "User_Teste": {"pw": make_hash("123"), "nicho": "Servicos", "wh": ""} }
 
