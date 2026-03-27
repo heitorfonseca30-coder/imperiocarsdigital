@@ -1,4 +1,3 @@
-📦 PORTAL BI "IMPÉRIO CARS" v32.1 (À PROVA DE ERROS):
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -63,50 +62,40 @@ if not st.session_state.logado:
             st.rerun()
         else:
             st.error("Credenciais Inválidas")
-    st.info("💡 Use sua Senha Mestra na Área do Dono para demonstrações.")
-
 else:
     user = st.session_state.user
     d_user = usuarios_db[user]
     
     if datetime.now() > d_user["vencimento"]:
-        st.error("⚠️ ACESSO EXPIRADO. Escolha um plano ou agende novo horário.")
+        st.error("⚠️ ACESSO EXPIRADO. Entre em contato com o suporte.")
         st.stop()
 
     st.sidebar.title(f"🏢 {user}")
-    aba = st.sidebar.radio("Navegação", ["📊 Dashboard", "💰 Lucratividade", "💡 Dicas de Especialista", "💳 Planos & Agendamento", "🔐 Área do Dono", "💬 Suporte IA"])
+    aba = st.sidebar.radio("Navegação", ["📊 Dashboard", "💰 Lucratividade", "💡 Dicas", "💳 Planos", "🔐 Área do Dono"])
     df = gerar_dados(d_user["nicho"])
 
     if aba == "📊 Dashboard":
         st.title(f"📊 Painel Principal: {d_user['nicho']}")
-        c1, c2, c3 = st.columns(3)
-        c1.metric("Faturamento", f"R$ {df['Valor'].sum():,.2f}", "+15%")
-        c2.metric("Ticket Médio", f"R$ {df['Valor'].mean():,.2f}")
-        c3.metric("Lucro Estimado", f"R$ {(df['Valor'].sum() - df['Custo'].sum()):,.2f}")
-        st.plotly_chart(px.line(df.groupby(df['Data'].dt.date)['Valor'].sum(), title="Tendência de Vendas"), use_container_width=True)
+        st.metric("Faturamento Mensal", f"R$ {df['Valor'].sum():,.2f}")
+        st.plotly_chart(px.line(df.groupby(df['Data'].dt.date)['Valor'].sum()), use_container_width=True)
 
     elif aba == "💰 Lucratividade":
         st.title("💰 Análise de Lucro")
         df['Lucro'] = df['Valor'] - df['Custo']
         st.bar_chart(df.groupby("Produto")["Lucro"].sum())
 
-    elif aba == "💡 Dicas de Especialista":
-        st.title("💡 Insights Business")
-        st.success("**Dica IA:** Seu vendedor 'Marcos' está com ticket 20% acima da média. Use-o para treinar a 'Ana'.")
+    elif aba == "💡 Dicas":
+        st.title("💡 Insights")
+        st.success("Dica: Foque em aumentar o ticket médio oferecendo serviços complementares.")
 
-    elif aba == "💳 Planos & Agendamento":
+    elif aba == "💳 Planos":
         st.title("💳 Assinaturas & Horários")
-        t1, t2 = st.tabs(["💎 Assinaturas", "⏱️ Uso Avulso"])
-        with t1:
-            cols = st.columns(3)
-            for i, (nome, d) in enumerate(PLANOS.items()):
-                with cols[i]:
-                    st.markdown(f"### {nome}")
-                    st.write(f"**Preço:** {d['preco']}")
-                    st.button(f"Assinar {nome}", key=f"plan_{i}")
-        with t2:
-            st.write("Agende seu acesso por apenas **R$ 25,00/hora**.")
-            st.button("Confirmar Agendamento Pix")
+        cols = st.columns(3)
+        for i, (nome, d) in enumerate(PLANOS.items()):
+            with cols[i]:
+                st.subheader(nome)
+                st.write(d['preco'])
+                st.button(f"Assinar {nome}", key=f"btn_{i}")
 
     elif aba == "🔐 Área do Dono":
         st.title("🔐 Painel Admin")
@@ -116,13 +105,9 @@ else:
             st.metric("Receita (SaaS)", "R$ 4.500,00")
         else: st.warning("Aguardando senha...")
 
-    elif aba == "💬 Suporte IA":
-        st.title("💬 Suporte IA")
-        if st.chat_input("Dúvida?"): st.write("IA: Analisando dados... Recomendo reduzir custos logísticos em 5%.")
-
     if st.sidebar.button("Sair"):
         st.session_state.logado = False
         st.rerun()
 
 with st.expander("📖 Manual"):
-    st.write("Portal v32.1: Sistema completo com Monetização e IA.")
+    st.write("Portal v32.2: Sistema completo e funcional.")
