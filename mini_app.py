@@ -62,6 +62,8 @@ if not st.session_state.logado:
             st.rerun()
         else:
             st.error("Credenciais Inválidas")
+    st.info("💡 Use sua Senha Mestra na Área do Dono para demonstrações.")
+
 else:
     user = st.session_state.user
     d_user = usuarios_db[user]
@@ -110,4 +112,4 @@ else:
         st.rerun()
 
 with st.expander("📖 Manual"):
-    st.write("Portal v32.2: Sistema completo e funcional.")
+    st.write("Portal v32.3: Sistema limpo e funcional.")
