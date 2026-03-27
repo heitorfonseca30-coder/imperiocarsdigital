@@ -1,5 +1,5 @@
 =================================================================
-🎨 DESIGN & ESTÉTICA PREMIUM (EDIÇÃO IMPÉRIO CARS)
+ DESIGN & ESTÉTICA PREMIUM (EDIÇÃO IMPÉRIO CARS)
 =================================================================
 st.set_page_config(page_title="Império Cars Digital - Portal BI v41.0", layout="wide", page_icon="🏎️")
 
