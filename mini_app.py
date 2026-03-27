@@ -10,7 +10,6 @@ from datetime import datetime, timedelta
 # =================================================================
 st.set_page_config(page_title="Império Cars Digital - Portal BI", layout="wide", page_icon="🏎️")
 
-# Estilo CSS Puro (Sem barras invertidas)
 st.markdown("""
     
     .stApp { background-color: #f4f7f6; }
@@ -81,12 +80,18 @@ else:
     elif aba == "💳 Planos":
         st.title("💳 Planos de Assinatura")
         p1, p2, p3 = st.columns(3)
-        with p1: st.markdown("### Bronze
-**R$ 99**"); st.button("Assinar Bronze")
-        with p2: st.markdown("### Prata
-**R$ 199**"); st.button("Assinar Prata")
-        with p3: st.markdown("### Ouro
-**R$ 399**"); st.button("Assinar Ouro")
+        with p1: 
+            st.subheader("Bronze")
+            st.write("R$ 99/mês")
+            st.button("Assinar Bronze", key="b1")
+        with p2: 
+            st.subheader("Prata")
+            st.write("R$ 199/mês")
+            st.button("Assinar Prata", key="b2")
+        with p3: 
+            st.subheader("Ouro")
+            st.write("R$ 399/mês")
+            st.button("Assinar Ouro", key="b3")
 
     elif aba == "🔐 Área do Dono":
         st.title("🔐 Painel Admin")
@@ -99,7 +104,5 @@ else:
     if st.sidebar.button("Sair"):
         st.session_state.logado = False; st.rerun()
 
-with st.expander("📖 Manual v35.2"):
-    st.write("Portal Sincronizado e Purificado de Erros.")
-✅ O QUE VOCÊ DEVE FAZER AGORA:
-Vá no GitHub, apague tudo do mini_app.py e cole este có
+with st.expander("📖 Manual v35.3"):
+    st.write("Portal v35.3: Sintaxe blindada contra erros de quebra de linha.")
